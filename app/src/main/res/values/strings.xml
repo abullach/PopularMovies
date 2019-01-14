@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">PopularMovies</string>
+    <string name="app_name">Popular Movies</string>
+
+    <!-- Error message when no movies returned from API [CHAR LIMIT=NONE] -->
+    <string name="no_movies_found">No movies found. Please refresh the app or try again later.</string>
+
+    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <string name="no_internet_connection">No internet connection.</string>
+    <string name="movie_poster_placeholder">Movie Poster</string>
+
+    <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
+    <string name="settings_menu_item">Settings</string>
+    <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
+    <string name="settings_title">Popular Movie Settings</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order-by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_most_popular_value</string>
+
+    <!-- Label for order-by oldest option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_top_rated_label">Top Rated</string>
+    <string name="settings_order_by_top_rated_value" translatable="false">toprated</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_most_popular_label">Most Popular</string>
+    <string name="settings_order_by_most_popular_value" translatable="false">mostpopular</string>
+
+    <string name="detail_release_date_label">Release Date:</string>
+    <string name="detail_vote_average_label">Vote Average:</string>
+
 </resources>
