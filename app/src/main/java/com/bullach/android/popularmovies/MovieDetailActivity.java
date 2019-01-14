@@ -19,8 +19,6 @@ import com.squareup.picasso.Picasso;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
-    private static final String TAG = MovieDetailActivity.class.getSimpleName();
-
     private TextView mMovieTitle;
     private ImageView mMoviePoster;
     private TextView mMovieOverview;
@@ -41,13 +39,13 @@ public class MovieDetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        mMovieTitle = (TextView) findViewById(R.id.tvMovieTitle);
-        mMoviePoster = (ImageView) findViewById(R.id.ivMoviePoster);
-        mMovieReleaseDate = (TextView) findViewById(R.id.tvMovieReleaseDate);
-        mMovieReleaseDateLabel = (TextView) findViewById(R.id.tvLabelReleaseDate);
-        mMovieVoteAverage = (TextView) findViewById(R.id.tvMovieVoteAverage);
-        mMovieVoteAverageLabel = (TextView) findViewById(R.id.tvLabelVoteAverage);
-        mMovieOverview = (TextView) findViewById(R.id.tvMovieOverview);
+        mMovieTitle = findViewById(R.id.tvMovieTitle);
+        mMoviePoster = findViewById(R.id.ivMoviePoster);
+        mMovieReleaseDate = findViewById(R.id.tvMovieReleaseDate);
+        mMovieReleaseDateLabel = findViewById(R.id.tvLabelReleaseDate);
+        mMovieVoteAverage = findViewById(R.id.tvMovieVoteAverage);
+        mMovieVoteAverageLabel = findViewById(R.id.tvLabelVoteAverage);
+        mMovieOverview = findViewById(R.id.tvMovieOverview);
 
         Intent intent = getIntent();
         if (intent == null) {

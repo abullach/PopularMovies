@@ -35,11 +35,6 @@ public final class QueryUtils {
     private static final String TAG = QueryUtils.class.getSimpleName();
 
     /**
-     * The HTTP method (GET, POST, PUT, etc.).
-     */
-    private static String method = "GET";
-
-    /**
      * The read timeout in milliseconds for waiting to read data.
      */
     private static final int READ_TIMEOUT_IN_MS = 10000; /* milliseconds */
@@ -148,6 +143,8 @@ public final class QueryUtils {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(READ_TIMEOUT_IN_MS);
             urlConnection.setConnectTimeout(CONNECTION_TIMEOUT_IN_MS);
+
+            String method = "GET";
             urlConnection.setRequestMethod(method);
             urlConnection.connect();
 

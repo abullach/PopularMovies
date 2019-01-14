@@ -45,10 +45,6 @@ public class Movie implements Parcelable {
         this.movieReleaseDate = movieReleaseDate;
     }
 
-    public int getMovieId() {
-        return movieId;
-    }
-
     public String getMovieTitle() {
         return movieTitle;
     }

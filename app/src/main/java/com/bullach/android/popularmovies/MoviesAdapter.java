@@ -2,6 +2,7 @@ package com.bullach.android.popularmovies;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +59,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            titleTextView = (TextView) itemView.findViewById(R.id.tvMovieTitle);
+            titleTextView = itemView.findViewById(R.id.tvMovieTitle);
             posterImageView = (ImageView) itemView.findViewById(R.id.ivPosterImage);
             itemView.setOnClickListener(this);
         }
@@ -80,7 +81,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     }
 
     @Override
-    public MoviesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MoviesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -88,12 +89,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         View contactView = inflater.inflate(R.layout.movie_list_item, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new ViewHolder(contactView);
     }
 
     @Override
-    public void onBindViewHolder(MoviesAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull MoviesAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
         Movie movie = mMovies.get(position);
 

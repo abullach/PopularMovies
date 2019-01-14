@@ -32,11 +32,6 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences.OnSharedPreferenceChangeListener  {
 
     /**
-     * Tag for the log messages
-     */
-    private static final String TAG = MainActivity.class.getSimpleName();
-
-    /**
      * Constant value for the movie loader ID.
      */
     private static final int MOVIE_LOADER_ID = 1;
@@ -59,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rvMovies);
+        mRecyclerView = findViewById(R.id.rvMovies);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         RecyclerView.ItemDecoration itemDecoration = new
@@ -179,7 +174,7 @@ public class MainActivity extends AppCompatActivity
                     getString(R.string.settings_order_by_default)
             );
 
-            if (!orderBy.equals(getString(R.string.settings_order_by_default))) {
+            if (orderBy != null && !orderBy.equals(getString(R.string.settings_order_by_default))) {
                 path = QueryUtils.TOP_RATED_MOVIE_PATH;
             }
 
