@@ -12,6 +12,7 @@ import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private TextView mEmptyStateTextView;
     private static boolean SHARED_PREF_CHANGED = false;
+    private static final String LIST_STATE_KEY = "list_state_key";
+    private GridLayoutManager mGridLayoutManager;
+    private Parcelable mListState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +54,15 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         mRecyclerView = findViewById(R.id.rvMovies);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            mGridLayoutManager = new GridLayoutManager(this, 2);
         } else {
-            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+            mGridLayoutManager = new GridLayoutManager(this, 3);
         }
+
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
+        mRecyclerView.setHasFixedSize(true);
 
         showEmptyState();
 
@@ -152,12 +158,10 @@ public class MainActivity extends AppCompatActivity
     public void onLoadFinished(Loader<List<Movie>> loader, List<Movie> movies) {
         hideLoadingIndicator();
 
-        mAdapter.clear();
-        if (movies != null && !movies.isEmpty()) {
+        if (movies != null) {
             showMovieData();
             hideLoadingIndicator();
             mAdapter.setMoviesData(movies);
-            mRecyclerView.setHasFixedSize(true);
         } else {
             showErrorMessage();
         }
@@ -226,5 +230,25 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+        mListState = mGridLayoutManager.onSaveInstanceState();
+        state.putParcelable(LIST_STATE_KEY, mListState);
+    }
+
+    protected void onRestoreInstanceState(Bundle state) {
+        super.onRestoreInstanceState(state);
+        if(state != null)
+            mListState = state.getParcelable(LIST_STATE_KEY);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mListState != null) {
+            mGridLayoutManager.onRestoreInstanceState(mListState);
+        }
     }
 }
