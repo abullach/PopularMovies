@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+    <string name="toolbar_title_detail">Movie Details</string>
 
     <!-- Error message when no movies returned from API [CHAR LIMIT=NONE] -->
     <string name="no_movies_found">No movies found. Please refresh the app or try again later.</string>
-
-    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
-    <string name="no_internet_connection">No internet connection.</string>
+    <string name="no_favorites_found">You have no favorite movies added yet.</string>
     <string name="movie_poster_placeholder">Movie Poster</string>
+
+    <!-- Content descriptions-->
+    <string name="movie_poster_content_description">Movie poster picture</string>
+    <string name="movie_title_content_description">Movie title</string>
+    <string name="play_arrow_content_description">Press to play trailer</string>
+    <string name="trailers_label">Trailers:</string>
+    <string name="no_trailers_message">No trailers available.</string>
+    <string name="no_reviews_message">No reviews available.</string>
+    <string name="no_network_message">No network connection.</string>
 
     <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
     <string name="settings_menu_item">Settings</string>
@@ -26,7 +34,23 @@
     <string name="settings_order_by_most_popular_label">Most Popular</string>
     <string name="settings_order_by_most_popular_value" translatable="false">mostpopular</string>
 
+    <!-- Label for order-by favorites option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_favorites_label">Favorites</string>
+    <string name="settings_order_by_favorites_value" translatable="false">favorites</string>
+
     <string name="detail_release_date_label">Release Date:</string>
     <string name="detail_vote_average_label">Vote Average:</string>
+
+    <!-- Used by TrailersAdapter.java -->
+
+    <string name="button_favorite_label">Add as favorite.</string>
+    <string name="button_unfavorite_label">Remove favorite.</string>
+
+    <!-- Used by review_list_item.xml -->
+    <string name="review_author">Written by </string>
+    <string name="review_author_name">anonymous</string>
+    <string name="review_content">Review about this movie.</string>
+    <string name="reviews_label">Reviews:</string>
+
 
 </resources>

@@ -1,38 +1,49 @@
-package com.bullach.android.popularmovies.model;
+package com.bullach.android.popularmovies.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 
+@Entity(tableName = "movie_table")
 public class Movie implements Parcelable {
 
     /**
      * Unique id of the movie.
      */
+    @PrimaryKey
     private int movieId;
 
     /**
      * Original title of the movie.
      */
+    @ColumnInfo(name = "title")
     private String movieTitle;
 
     /**
      * Poster image thumbnail of the movie.
      */
+    @ColumnInfo(name = "poster_path")
     private String moviePosterPath;
 
     /**
      * Plot synopsis of the movie.
      */
+    @ColumnInfo(name = "overview")
     private String movieOverview;
 
     /**
      * User rating (vote average) of the movie.
      */
+    @ColumnInfo(name = "vote_average")
     private String movieVoteAverage;
 
     /**
      * Release date of the movie.
      */
+    @ColumnInfo(name = "release_date")
     private String movieReleaseDate;
 
 
@@ -43,6 +54,10 @@ public class Movie implements Parcelable {
         this.movieOverview = movieOverview;
         this.movieVoteAverage = movieVoteAverage;
         this.movieReleaseDate = movieReleaseDate;
+    }
+
+    public int getMovieId() {
+        return movieId;
     }
 
     public String getMovieTitle() {
@@ -65,6 +80,7 @@ public class Movie implements Parcelable {
         return movieReleaseDate;
     }
 
+    @Ignore
     private Movie(Parcel in) {
         movieId = in.readInt();
         movieTitle = in.readString();

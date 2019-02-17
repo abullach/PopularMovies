@@ -3,7 +3,7 @@ package com.bullach.android.popularmovies;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import com.bullach.android.popularmovies.model.Movie;
+import com.bullach.android.popularmovies.models.Movie;
 import com.bullach.android.popularmovies.utils.QueryUtils;
 
 import java.util.List;
@@ -42,7 +42,6 @@ public class MovieLoader extends AsyncTaskLoader<List<Movie>> {
         }
 
         // Perform the network request, parse the response and extract a list of movies.
-        List<Movie> movies = QueryUtils.fetchMovieData(mUrl);
-        return movies;
+        return QueryUtils.fetchMovieData(mUrl);
     }
 }
